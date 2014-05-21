@@ -1,4 +1,4 @@
 tcsamCrabFisheryData
 ====================
 
-A collection of R functions related to (ADFG) crab fishery data.
+A collection of R functions related to processing (ADFG) crab fishery data for the BSAI Tanner crab stock assessment.
