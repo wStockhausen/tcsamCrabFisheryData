@@ -1,9 +1,9 @@
 #'
-#'@title Calculate size frequencies from ADF&G "measure pot" data.
+#'@title Calculate size frequencies from ADF&G detailed "measure pot" data.
 #'
-#'@description
+#'@description Calculate size frequencies from ADF&G detailed "measure pot" data.
 #'
-#'@details 
+#'@details Calculate size frequencies from ADF&G detailed "measure pot" data.
 #'
 #'@param tbl - dataframe derived from old-format ADF&G observed size frequencies csv file, or csv file itself
 #'@param cutpts - vector of cut points for binning
@@ -21,17 +21,17 @@
 #'
 #'@export
 #' 
-calcSizeFreqs.FromMeasurePots<-function(tbl=NULL,
+calcSizeFreqs.FromDetailPots<-function(tbl=NULL,
                                         cutpts=seq(from=25,to=185,by=5),
                                         truncate.low=FALSE,
                                         truncate.high=FALSE,
                                         csv.base=NULL){
   
-  #create 'measure pots' data table (if not an input)
+  #create detailed 'measure' pots data table (if not an input)
   if (!is.data.frame(tbl)){
-    cat("Reading ADF&G measure pots csv file.\n")
+    cat("Reading ADF&G detailed 'measure' pots csv file.\n")
     if (is.null(tbl)) {
-        tbl<-wtsUtilities::getCSV(caption='Select ADF&G "measure pots" data csv file');
+        tbl<-wtsUtilities::getCSV(caption='Select ADF&G detailed "measure" pots data csv file');
         if (is.null(tbl)) return(NULL);
     } else {
         tbl<-read.csv(tbl,stringsAsFactors=FALSE);
@@ -133,10 +133,10 @@ calcSizeFreqs.FromMeasurePots<-function(tbl=NULL,
   
   return(list(by1mm=tbl2,long=tbl3,wide=tbl4));
 }
-
-csv.in<-"SnowCrabFishery2012-13_TannerAllCrab.csv"
-res<-calcSizeFreqs.FromMeasurePots(tbl=csv.in,
-                                   cutpts=seq(from=25,to=185,by=5),
-                                   truncate.low=FALSE,
-                                   truncate.high=FALSE,
-                                   csv.base="SnowCrabFishery2012-13_TannerAllCrabBinnedSizeFreqs.csv")
+# 
+# csv.in<-"SnowCrabFishery2012-13_TannerAllCrab.csv"
+# res<-calcSizeFreqs.FromMeasurePots(tbl=csv.in,
+#                                    cutpts=seq(from=25,to=185,by=5),
+#                                    truncate.low=FALSE,
+#                                    truncate.high=FALSE,
+#                                    csv.base="SnowCrabFishery2012-13_TannerAllCrabBinnedSizeFreqs.csv")

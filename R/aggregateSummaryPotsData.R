@@ -1,9 +1,9 @@
 #'
-#'@title Aggregate data from ADF&G "all pots" (ObservedSummaryPots) data files.
+#'@title Aggregate data from ADF&G "all pots" (SummaryPots) data files.
 #'
-#'@description
+#'@description Function to aggregate (and, optionally, map) data from ADF&G "all pots" (SummaryPots) data files.
 #'
-#'@details 
+#'@details plotMaps.ObservedSummaryPots(...) is used to map the aggregated data if plotMaps is TRUE.  
 #'
 #'@param tbl - dataframe derived from "all pots" (ObservedSummaryPots) csv file, or csv file itself
 #'@param plotMaps - flag (T/F) to plot maps derived from the dataframe
@@ -19,17 +19,17 @@
 #'
 #'@export
 #' 
-aggregateObservedSummaryPots<-function(tbl=NULL,
-                                       byQuarter=FALSE,
-                                       byFishery=FALSE,
-                                       plotMaps=TRUE,
-                                       ...){
+aggregateSummaryPotsData<-function(tbl=NULL,
+                                   byQuarter=FALSE,
+                                   byFishery=FALSE,
+                                   plotMaps=TRUE,
+                                   ...){
     
     #create 'all pot' (ObservedSummaryPots) data table (if not an input)
     if (!is.data.frame(tbl)){
-        cat("Reading ADF&G 'all pots' (ObservedSummaryPots) csv file.\n")
+        cat("Reading ADF&G 'all pots' (SummaryPots) csv file.\n")
         if (is.null(tbl)) {
-            tbl<-wtsUtilities::getCSV(caption='Select ADF&G "all pots" (ObservedSummaryPots) csv file');
+            tbl<-wtsUtilities::getCSV(caption='Select ADF&G "all pots" (SummaryPots) csv file');
             if (is.null(tbl)) return(NULL);
         } else {
             tbl<-read.csv(tbl,stringsAsFactors=FALSE);
@@ -37,6 +37,7 @@ aggregateObservedSummaryPots<-function(tbl=NULL,
         cat("Done reading input csv file.\n")
     }
     
+    #add month and quarter dataframe
     names(tbl)<-tolower(names(tbl));
     tbl[['month']]<-wtsUtilities::parseMonths(tbl$date,format='MM/DD/YY')
     tbl[['qrtr']]<-getCrabFisheryQuarterFromMonth(tbl$month);
@@ -106,10 +107,10 @@ aggregateObservedSummaryPots<-function(tbl=NULL,
     print(tbl2);
     
     if (plotMaps){
-        plotMaps.ObservedSummaryPots(tbl=tbl2,byQuarter=byQuarter,byFishery=byFishery,...)
+        plotMaps.SummaryPotsData(tbl=tbl2,byQuarter=byQuarter,byFishery=byFishery,...)
     }
     
     return(tbl2);
 }
 
-tbl2<-aggregateObservedSummaryPots(plotMaps=TRUE)
+#tbl2<-aggregateSummaryPotsData(plotMaps=TRUE)

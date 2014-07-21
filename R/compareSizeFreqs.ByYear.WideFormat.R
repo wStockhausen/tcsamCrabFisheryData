@@ -23,7 +23,6 @@
 #'be prompted to specify for the comparison. 
 #'
 #'@import wtsUtilities
-#'@import tcltk
 #'
 #'@export
 #'
@@ -55,11 +54,11 @@ compareSizeFreqs.ByYear<-function(dfrs=NULL,
     csv<-"";
     dfrsp<-vector(mode='list',length=n)
     for (i in 1:n) {
-            dfr<-wtsUtilities::getCSV(caption=paste("Select ",i,"th size frequency csv file",sep=""))
-            if (is.null(dfr)) {return(NULL);} #user cancelled
-        } else {
         if (flg){
             dfr<-dfrs[[i]];
+        } else {
+            dfr<-wtsUtilities::getCSV(caption=paste("Select ",i,"th size frequency csv file",sep=""))
+            if (is.null(dfr)) {return(NULL);} #user cancelled
         }
         nc<-ncol(dfr);
         yrs<-dfr$year;

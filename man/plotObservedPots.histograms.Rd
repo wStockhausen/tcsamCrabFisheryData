@@ -1,0 +1,35 @@
+\name{plotObservedPots.histograms}
+\alias{plotObservedPots.histograms}
+\title{Plot histograms of numbers caught in observed pot hauls by type.}
+\usage{
+plotObservedPots.histograms(dfr = NULL, vars = c("female", "sublegal",
+  "legalnr", "legalret"), labs = c("female", "sublegal males",
+  "discarded legal males", "retained legal males"), maxCatch = 100,
+  noplot = FALSE)
+}
+\arguments{
+  \item{dfr}{- dataframe (or csv filename) with data from
+  "observed pots"}
+
+  \item{vars}{- column names with data for plots}
+
+  \item{labs}{- 'nice' names to associate with column names
+  for plot labels}
+
+  \item{maxCatch}{- value for 'plus' group on number of
+  individuals caught/pot}
+
+  \item{noplot}{- just return the dataframe}
+}
+\description{
+Function to plot histograms of numbers caught in observed
+pot hauls by type.
+}
+\details{
+
+
+For observed hauls, plots % of non-zero pot hauls by catch
+type and histograms of no. caught in pot hauls by catch
+type.
+}
+

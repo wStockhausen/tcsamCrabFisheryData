@@ -1,0 +1,35 @@
+\name{aggregateSummaryPotsData}
+\alias{aggregateSummaryPotsData}
+\title{Aggregate data from ADF&G "all pots" (SummaryPots) data files.}
+\usage{
+aggregateSummaryPotsData(tbl = NULL, byQuarter = FALSE, byFishery = FALSE,
+  plotMaps = TRUE, ...)
+}
+\arguments{
+  \item{tbl}{- dataframe derived from "all pots"
+  (ObservedSummaryPots) csv file, or csv file itself}
+
+  \item{plotMaps}{- flag (T/F) to plot maps derived from
+  the dataframe}
+
+  \item{byQuarter}{- flag to plot maps by fishery quarter}
+
+  \item{byFishery}{- flag to plot maps by fishery type}
+
+  \item{...}{- additional inputs to
+  plotMaps.ObservedSummaryPots(tbl,byQuarter,byFishery,...)}
+}
+\value{
+dataframe
+}
+\description{
+Function to aggregate (and, optionally, map) data from
+ADF&G "all pots" (SummaryPots) data files.
+}
+\details{
+
+
+plotMaps.ObservedSummaryPots(...) is used to map the
+aggregated data if plotMaps is TRUE.
+}
+

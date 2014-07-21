@@ -1,0 +1,45 @@
+\name{binSizeFreqs.From1mmBins.OldFormat}
+\alias{binSizeFreqs.From1mmBins.OldFormat}
+\title{Re-bin size frequencies from annual ADF&G observed size frequencies (in old format csv files).}
+\usage{
+binSizeFreqs.From1mmBins.OldFormat(tbl = NULL, cutpts = seq(from = 25, to =
+  185, by = 5), truncate.low = TRUE, truncate.high = FALSE,
+  csv.base = NULL)
+}
+\arguments{
+  \item{tbl}{- dataframe derived from old-format ADF&G
+  observed size frequencies csv file, or csv file itself}
+
+  \item{cutpts}{- vector of cut points for binning}
+
+  \item{truncate.low}{- flag (T/F) to exclude sizes smaller
+  than the 1st cutpoint}
+
+  \item{truncate.high}{- flag (T/F) to exclude sizes larger
+  than the last cutpoint}
+
+  \item{csv.base}{- filename base for output csv files}
+}
+\value{
+list with 3 elements * long - size frequencies in long
+format * wide - size frquencies in wide format *
+sample.size - associated sample sizes
+}
+\description{
+Function to re-bin and export size frequencies based on
+annual ADF&G 1-mm size bin counts as csv files.
+}
+\details{
+
+
+This function takes a dataframe derived from an old-format
+ADF&G observed size frequencies file, bins it, and converts
+it to wide- and long-format size frequency dataframes, as
+well as an associated table of sample sizes. In the old
+format, each file represents total numbers of at-sea
+observer-measured crabs for a single year, classified by
+shell condition categories 'newsoft', 'pliable', 'new',
+'old' and 'very old' (each a column), as well as by 'sex'
+and 'size' (columns).
+}
+

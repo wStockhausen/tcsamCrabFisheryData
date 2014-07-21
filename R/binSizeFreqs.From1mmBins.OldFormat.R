@@ -1,7 +1,7 @@
 #'
 #'@title Re-bin size frequencies from annual ADF&G observed size frequencies (in old format csv files).
 #'
-#'@description
+#'@description Function to re-bin and export size frequencies based on annual ADF&G 1-mm size bin counts as csv files.
 #'
 #'@details This function takes a dataframe derived from an old-format ADF&G observed size frequencies
 #'file, bins it, and converts it to wide- and long-format size frequency dataframes, as well as an
