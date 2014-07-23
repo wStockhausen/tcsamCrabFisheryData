@@ -8,4 +8,4 @@ Maintainer: William Stockhausen <william.stockhausen@noaa.gov>
 Description: Provides a set of functions to process ADFG fishery data for the Tanner crab assessment.
 License: MIT
 Imports:
-    lattice,sqldf,wtsGMT,wtsUtilities
+    grDevices,lattice,sqldf,wtsGMT

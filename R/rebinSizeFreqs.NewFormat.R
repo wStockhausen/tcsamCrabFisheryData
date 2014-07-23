@@ -21,16 +21,16 @@
 #'@export
 #'
 #library('sqldf');
-binSizeFreqs.From1mmBins.NewFormat<-function(dfr=NULL,
-                                             aggByRegion=TRUE,
-                                             aggBySex=FALSE,
-                                             aggByShellCondition=FALSE,
-                                             cutpts=seq(from=25,to=185,by=5),
-                                             truncate.low=TRUE,
-                                             truncate.high=FALSE,
-                                             save=TRUE,
-                                             out.dir=NULL,
-                                             out.csv=NULL){
+rebinSizeFreqs.NewFormat<-function(dfr=NULL,
+                                   aggByRegion=TRUE,
+                                   aggBySex=FALSE,
+                                   aggByShellCondition=FALSE,
+                                   cutpts=seq(from=25,to=185,by=5),
+                                   truncate.low=TRUE,
+                                   truncate.high=FALSE,
+                                   save=TRUE,
+                                   out.dir=NULL,
+                                   out.csv=NULL){
     if (!is.data.frame(dfr)){
         if (is.null(dfr)){
             #get csv file
@@ -190,4 +190,4 @@ binSizeFreqs.From1mmBins.NewFormat<-function(dfr=NULL,
 #     return(invisible(res));
 }
 
-#dfr<-binSizeFreqs.From1mmBins.NewFormat(save=FALSE);
+#dfr<-rebinSizeFreqs.NewFormat(save=FALSE);

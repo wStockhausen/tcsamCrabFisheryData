@@ -1,11 +1,11 @@
-\name{binSizeFreqs.From1mmBins.NewFormat}
-\alias{binSizeFreqs.From1mmBins.NewFormat}
+\name{rebinSizeFreqs.NewFormat}
+\alias{rebinSizeFreqs.NewFormat}
 \title{Re-bin and export size frequencies based on a csv file with annual (new format) ADF&G 1-mm size bin counts.}
 \usage{
-binSizeFreqs.From1mmBins.NewFormat(dfr = NULL, aggByRegion = TRUE,
-  aggBySex = FALSE, aggByShellCondition = FALSE, cutpts = seq(from = 25,
-  to = 185, by = 5), truncate.low = TRUE, truncate.high = FALSE,
-  save = TRUE, out.dir = NULL, out.csv = NULL)
+rebinSizeFreqs.NewFormat(dfr = NULL, aggByRegion = TRUE, aggBySex = FALSE,
+  aggByShellCondition = FALSE, cutpts = seq(from = 25, to = 185, by = 5),
+  truncate.low = TRUE, truncate.high = FALSE, save = TRUE,
+  out.dir = NULL, out.csv = NULL)
 }
 \arguments{
   \item{dfr}{- dataframe with raw size freq.s (or csv

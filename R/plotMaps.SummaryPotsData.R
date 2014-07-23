@@ -15,7 +15,7 @@
 #'@return list with z-scales for each plot type.
 #'
 #'@import sqldf
-#'@importFrom wtsUtilties getCSV
+#'@importFrom wtsUtilities getCSV
 #'@importFrom wtsGMT plotMap.CSV
 #'@importFrom wtsGMT createPDF.fromPS
 #'

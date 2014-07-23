@@ -1,10 +1,9 @@
-\name{binSizeFreqs.From1mmBins.OldFormat}
-\alias{binSizeFreqs.From1mmBins.OldFormat}
+\name{rebinSizeFreqs.OldFormat}
+\alias{rebinSizeFreqs.OldFormat}
 \title{Re-bin size frequencies from annual ADF&G observed size frequencies (in old format csv files).}
 \usage{
-binSizeFreqs.From1mmBins.OldFormat(tbl = NULL, cutpts = seq(from = 25, to =
-  185, by = 5), truncate.low = TRUE, truncate.high = FALSE,
-  csv.base = NULL)
+rebinSizeFreqs.OldFormat(tbl = NULL, cutpts = seq(from = 25, to = 185, by =
+  5), truncate.low = TRUE, truncate.high = FALSE, csv.base = NULL)
 }
 \arguments{
   \item{tbl}{- dataframe derived from old-format ADF&G

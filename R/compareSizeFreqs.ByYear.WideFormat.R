@@ -22,7 +22,7 @@
 #'If 'dfrs' is NULL, then 'n' represents the number of size frequency files the user will
 #'be prompted to specify for the comparison. 
 #'
-#'@import wtsUtilities
+#'@importFrom wtsUtilities getCSV
 #'
 #'@export
 #'

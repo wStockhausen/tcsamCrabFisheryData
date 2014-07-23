@@ -4,10 +4,10 @@
 \usage{
 compareSizeFreqs.ByYear.LongFormat(dfrs = NULL, n = 1, lbls = NULL,
   yCol = "year", zCol = "size", fCol = "frequency", norm = TRUE,
-  alternate = FALSE, ylim = NULL, zlim = NULL, fmax = NULL,
-  samePlotScale = TRUE, vlines = c(127, 140), ltys = 1:4,
-  cols = c("blue", "green", "cyan", "gray"), alpha = 0.5, plotPDF = FALSE,
-  nc = 4, nr = 5, pdfFile = "compZFs.pdf")
+  alternate = FALSE, ylim = NULL, zlim = NULL, flim = NULL,
+  samePlotScale = TRUE, vlines = c(127, 140), ltys = 1, lwd = 2,
+  cols = c("blue", "green", "cyan", "magenta"), alpha = 0.5,
+  pdfFile = NULL, plt.nc = 4, plt.nr = 5)
 }
 \arguments{
   \item{dfrs}{- list of dataframes w/ size frequencies to
@@ -35,7 +35,8 @@ compareSizeFreqs.ByYear.LongFormat(dfrs = NULL, n = 1, lbls = NULL,
 
   \item{zlim}{- range of sizes to plot (can be NULL)}
 
-  \item{fmax}{- max frequency scale for plot (can be NULL)}
+  \item{flim}{- range for frequency scale on plot (can be
+  NULL)}
 
   \item{samePlotScale}{- flag (T/F) to use same frequency
   scale for all plots}
@@ -46,21 +47,21 @@ compareSizeFreqs.ByYear.LongFormat(dfrs = NULL, n = 1, lbls = NULL,
   \item{ltys}{- vector of line types to use to plot size
   freq.s}
 
+  \item{lwd}{- line width for outlines of size freq.s}
+
   \item{cols}{- vector of colors to use to plot size
   freq.s}
 
   \item{alpha}{- transparency value (0-1) to use for areas}
 
-  \item{plotPDF}{- flag (T/F) to output plots to a pdf
-  file}
+  \item{pdfFile}{- name of output pdf file (or NULL, if
+  none desired)}
 
-  \item{nc}{- number of columns per page in which to
+  \item{plt.nc}{- number of columns per page in which to
   arrange plots for pdf output}
 
-  \item{nr}{- number of rows per page in which to arrage
-  plots for pdf output}
-
-  \item{pdfFile}{- name of output pdf file}
+  \item{plt.nr}{- number of rows per page in which to
+  arrage plots for pdf output}
 }
 \description{
 Function to plot size frequencies by year for visual

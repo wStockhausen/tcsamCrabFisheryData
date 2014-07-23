@@ -17,7 +17,7 @@
 #'* sample.size - associated sample sizes
 #'
 #'@import sqldf
-#'@importFrom wtsUtilties getCSV
+#'@importFrom wtsUtilities getCSV
 #'
 #'@export
 #' 

@@ -22,16 +22,16 @@
 #'* sample.size - associated sample sizes
 #'
 #'@import sqldf
-#'@importFrom wtsUtilties getCSV
+#'@importFrom wtsUtilities getCSV
 #'
 #'@export
 #' 
 #library(sqldf);
-binSizeFreqs.From1mmBins.OldFormat<-function(tbl=NULL,
-                                             cutpts=seq(from=25,to=185,by=5),
-                                             truncate.low=TRUE,
-                                             truncate.high=FALSE,
-                                             csv.base=NULL){
+rebinSizeFreqs.OldFormat<-function(tbl=NULL,
+                                   cutpts=seq(from=25,to=185,by=5),
+                                   truncate.low=TRUE,
+                                   truncate.high=FALSE,
+                                   csv.base=NULL){
   
   #
   if (!is.data.frame(tbl)){
@@ -154,16 +154,16 @@ binSizeFreqs.From1mmBins.OldFormat<-function(tbl=NULL,
 }
 
 # csv.in<-"SnowCrabFishery2012-13_TannerSizeFreqsBySex.csv"
-# SizeFreqs.SCF<-binSizeFreqs.From1mmBins.OldFormat(csv.in=csv.in,
-#                                                   cutpts=seq(from=25,to=185,by=5),
-#                                                   csv.base="TCSAM2012-13_SCF.BinnedSizeFreqs")
+# SizeFreqs.SCF<-binSizeFreqs.OldFormat(csv.in=csv.in,
+#                                       cutpts=seq(from=25,to=185,by=5),
+#                                       csv.base="TCSAM2012-13_SCF.BinnedSizeFreqs")
 # 
 # csv.in<-"BBRKCFishery2012-13_TannerSizeFreqsBySex.csv"
-# SizeFreqs.RKF<-binSizeFreqs.From1mmBins.OldFormat(csv.in=csv.in,
-#                                                   cutpts=seq(from=25,to=185,by=5),
-#                                                   csv.base="TCSAM2012-13_RKF.BinnedSizeFreqs")
+# SizeFreqs.RKF<-binSizeFreqs.OldFormat(csv.in=csv.in,
+#                                       cutpts=seq(from=25,to=185,by=5),
+#                                       csv.base="TCSAM2012-13_RKF.BinnedSizeFreqs")
 # 
 # csv.in<-"../2009-10/TannerCrabFishery2009-10_TannerCrabRetainedSizeFreqsBySex.csv"
-# SizeFreqs.TCFR<-binSizeFreqs.From1mmBins.OldFormat(csv.in=csv.in,
-#                                                    cutpts=seq(from=25,to=185,by=5),
-#                                                    csv.base="../2009-10/TCSAM2009-10_TCF.RetainedBinnedSizeFreqs")
+# SizeFreqs.TCFR<-binSizeFreqs.OldFormat(csv.in=csv.in,
+#                                        cutpts=seq(from=25,to=185,by=5),
+#                                        csv.base="../2009-10/TCSAM2009-10_TCF.RetainedBinnedSizeFreqs")

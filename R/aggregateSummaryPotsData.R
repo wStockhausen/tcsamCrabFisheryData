@@ -15,7 +15,7 @@
 #' 
 #'
 #'@import sqldf
-#'@importFrom wtsUtilties getCSV
+#'@importFrom wtsUtilities getCSV
 #'
 #'@export
 #' 
