@@ -78,18 +78,23 @@ compareSizeFreqs.ByYear.LongFormat<-function(dfrs=NULL,
             dfr<-wtsUtilities::getCSV(caption=paste("Select ",i,"th size frequency csv file",sep=""))
             if (is.null(dfr)) {return(NULL);} #user cancelled
         }
-        yrs<-sort(unique(dfr[[yCol]]));
-        ylimp<-range(ylimp,yrs,na.rm=TRUE);
-        zlimp<-range(zlimp,dfr[[zCol]],na.rm=TRUE);
-        for (y in yrs){
-            frq<-dfr[dfr[[yCol]]==y,fCol];
-            if (norm)      {frq<-frq/sum(frq);}
-            if (alternate) {frq<-(-1)^(i-1)*frq;}
-            flimp<-range(flimp,frq,na.rm=TRUE);
-        }#y loop
-        dfrsp[[i]]<-list(yrs=yrs,dfr=dfr);
+        if (nrow(dfr)>0){
+            yrs<-sort(unique(dfr[[yCol]]));
+            ylimp<-range(ylimp,yrs,na.rm=TRUE);
+            zlimp<-range(zlimp,dfr[[zCol]],na.rm=TRUE);
+            for (y in yrs){
+                frq<-dfr[dfr[[yCol]]==y,fCol];
+                if (norm&(sum(frq)>0)) {frq<-frq/sum(frq);}
+                if (alternate)         {frq<-(-1)^(i-1)*frq;}
+                flimp<-range(flimp,frq,na.rm=TRUE);
+            }#y loop
+#            dfrsp[[i]]<-list(yrs=yrs,dfr=dfr);
+            dfrsp[[i]]<-dfr;
+        } else {
+            dfrsp[[i]]<-NULL;
+        }
     }#i loop
-    remove(yrs,dfr);
+    remove(i,y,frq,yrs,dfr);
     
     #set global scales
     if (is.null(ylim)) ylim<-ylimp;
@@ -103,6 +108,7 @@ compareSizeFreqs.ByYear.LongFormat<-function(dfrs=NULL,
         dev<-pdf(file=pdfFile,8.5,11);
         par.old<-par(mfrow=c(plt.nr,plt.nc),mar=c(3, 2, 0, 1),cex=.5,omi=c(0.5,0.5,0.5,0.5))
         on.exit(par(par.old));
+        on.exit(dev.off(),add=TRUE)
     }
     
     #start plotting
@@ -120,15 +126,21 @@ compareSizeFreqs.ByYear.LongFormat<-function(dfrs=NULL,
         #determine f-scale for this plot
         flmp<-0;
         for (i in 1:n){
-            dfr<-dfrsp[[i]]$dfr;
-            frq<-as.vector(t(dfr[dfr[[yCol]]==y,fCol]));
-            if (norm)      {frq<-frq/sum(frq);}
-            if (alternate) {frq<-(-1)^(i-1)*frq;}
-            flmp<-range(flmp,frq,na.rm=TRUE);
+            dfr<-dfrsp[[i]];
+            if (!is.null(dfr)){
+                frq<-as.vector(t(dfr[dfr[[yCol]]==y,fCol]));
+                if (length(frq)>0){
+                    if (norm&(sum(frq)>0)) {frq<-frq/sum(frq);}
+                    if (alternate)         {frq<-(-1)^(i-1)*frq;}
+                    flmp<-range(flmp,frq,na.rm=TRUE);
+                }
+            }
         }
         remove(dfr,frq);
+        
         if (!samePlotScale) flim<-flmp;
-        if (is.finite(flmp[2])){
+        
+        if ((length(flmp)>1)&&is.finite(flmp[2])){
             cat("\tPlotting ",y,'\n')
             plot(zlim,flim,type='n',
                  xlim=zlim,     xlab=xlab,
@@ -138,29 +150,31 @@ compareSizeFreqs.ByYear.LongFormat<-function(dfrs=NULL,
 #            print(usr)
             rect(usr[1],usr[3],usr[2],usr[3],col="light gray",border=NA,xpd=TRUE)
             for (i in 1:n){
-                dfr<-dfrsp[[i]]$dfr;
-                bns<-as.vector(t(dfr[dfr[[yCol]]==y,zCol]));
-                frq<-as.vector(t(dfr[dfr[[yCol]]==y,fCol]));
-                nb<-length(bns);
-                if (nb==0){
-                    cat('\t\tDropping',lbls[i],'from plot. No data.\n')
-                } else if (nb>0){
-                    cat('\t\tIncluding',lbls[i],'in plot. nb=',nb,'\n')
-                    if (norm) {frq<-frq/sum(frq);}
-                    if (alternate) {frq<-(-1)^(i-1)*frq;}
-                    for (ib in 1:(nb-1)){
-                        #on.exit(cat('y=',y,'i=',i,'ib=',ib,'frq[ib]=',frq[ib],'\n'));
-                        if (frq[ib]!=0){
-                            rect(bns[ib],0,bns[ib+1],frq[ib],border=NA,
+                dfr<-dfrsp[[i]];
+                if (!is.null(dfr)){
+                    bns<-as.vector(t(dfr[dfr[[yCol]]==y,zCol]));
+                    frq<-as.vector(t(dfr[dfr[[yCol]]==y,fCol]));
+                    nb<-length(bns);
+                    if (nb==0){
+                        cat('\t\tDropping',lbls[i],'from plot. No data.\n')
+                    } else if (nb>0){
+                        cat('\t\tIncluding',lbls[i],'in plot. nb=',nb,'\n')
+                        if (norm&(sum(frq)>0)) {frq<-frq/sum(frq);}
+                        if (alternate)         {frq<-(-1)^(i-1)*frq;}
+                        for (ib in 1:(nb-1)){
+#                            on.exit(cat('y=',y,'i=',i,'ib=',ib,'frq[ib]=',frq[ib],'\n'));
+                            if (frq[ib]!=0){
+                                rect(bns[ib],0,bns[ib+1],frq[ib],border=NA,
+                                    col=wtsUtilities::addTransparency(cols[i],alpha=alpha));
+                            }
+                        }
+                        if (frq[nb]!=0){
+                            rect(bns[nb],0,bns[nb]+(bns[nb]-bns[nb-1]),frq[nb],border=NA,
                                 col=wtsUtilities::addTransparency(cols[i],alpha=alpha));
                         }
-                    }
-                    if (frq[nb]!=0){
-                        rect(bns[nb],0,bns[nb]+(bns[nb]-bns[nb-1]),frq[nb],border=NA,
-                            col=wtsUtilities::addTransparency(cols[i],alpha=alpha));
-                    }
-                    lines(bns,frq,lty=ltys[i],col=cols[i],lwd=lwd,type="s");     
-                }#nb>0
+                        lines(bns,frq,lty=ltys[i],col=cols[i],lwd=lwd,type="s");     
+                    }#nb>0
+                }#!is.null(dfr)
             }#i loop
             remove(dfr,bns,frq);
             if (!is.null(vlines)){
@@ -187,7 +201,6 @@ compareSizeFreqs.ByYear.LongFormat<-function(dfrs=NULL,
             }
         }#finite(fmxp)
     }#y loop
-    if (plotPDF) {dev.off();}
 }
 
 #compareSizeFreqs.ByYear.LongFormat(n=2,lbls=c("revised","2013"),plotPDF="TRUE")
