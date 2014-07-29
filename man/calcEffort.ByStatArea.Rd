@@ -1,0 +1,32 @@
+\name{calcEffort.ByStatArea}
+\alias{calcEffort.ByStatArea}
+\title{Calculate observer effort (pots) by stat area from ADF&G detailed "measure" pot data.}
+\usage{
+calcEffort.ByStatArea(tbl = NULL, out.csv = NULL)
+}
+\arguments{
+  \item{tbl}{- dataframe derived from ADF&G observed pot
+  data.}
+
+  \item{out.csv}{- filename base for output csv file}
+}
+\value{
+dataframe with the following columns: * fisheryyear - crab
+fishery year (YYYY: July YYYY-June YYYY+1) * fisheryquarter
+- quarter for crab fishery year (July-June) * fisherytype -
+fishery type * statarea - ADFG stat area * vessels - number
+of observed vessels * trips - number of observer trips *
+pots - number of pots sampled
+}
+\description{
+Function to calculate observer effort by stat area from
+ADF&G detailed "measure" pot data.
+}
+\details{
+
+
+Function to calculate observer effort by stat area from
+ADF&G detail (individual crab measurements) or summary
+(numbers by crab type) pot data.
+}
+
