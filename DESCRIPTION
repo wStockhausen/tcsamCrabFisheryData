@@ -1,11 +1,11 @@
 Package: tcsamCrabFisheryData
 Type: Package
 Title: Functions to process ADFG fishery data for the Tanner crab assessment.
-Version: 1.0
-Date: 2014-05-20
+Version: 1.0.1
+Date: 2014-07-30
 Author: William Stockhausen
 Maintainer: William Stockhausen <william.stockhausen@noaa.gov>
 Description: Provides a set of functions to process ADFG fishery data for the Tanner crab assessment.
 License: MIT
 Imports:
-    grDevices,lattice,sqldf,wtsGMT
+    grDevices,lattice,sqldf,wtsGMT,wtsUtilities
