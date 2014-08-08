@@ -1,8 +1,8 @@
-\name{getCrabFisheryQuarterFromMonth}
-\alias{getCrabFisheryQuarterFromMonth}
+\name{calcCrabFisheryQuarterFromMonth}
+\alias{calcCrabFisheryQuarterFromMonth}
 \title{Convert month(s) to quarters by crab fishery year (starting July 1).}
 \usage{
-getCrabFisheryQuarterFromMonth(x)
+calcCrabFisheryQuarterFromMonth(x)
 }
 \arguments{
   \item{x}{- vector of months to convert}

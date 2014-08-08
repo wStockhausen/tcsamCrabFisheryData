@@ -1,0 +1,29 @@
+\name{calcCrabFisheryYear}
+\alias{calcCrabFisheryYear}
+\title{Convert dates to crab fishery year (starting July 1).}
+\usage{
+calcCrabFisheryYear(dates = NULL, years = NULL, months = NULL,
+  format = "MM/DD/YYYY")
+}
+\arguments{
+  \item{dates}{- vector of dates to convert}
+
+  \item{years}{- vector of calendar years to convert (must
+  supply 'month', as well)}
+
+  \item{months}{- vector of months (1-12) to use to convert
+  calendar years}
+
+  \item{format}{- format for date strings}
+}
+\value{
+vector of crab fishery years
+}
+\description{
+Function that converts a vector of dates to crab fishery
+year (i.e., starting July 1).
+}
+\details{
+
+}
+

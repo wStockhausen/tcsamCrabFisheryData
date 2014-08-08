@@ -10,7 +10,7 @@
 #'
 #'@export
 #'
-getCrabFisheryQuarterFromMonth<-function(x){
+calcCrabFisheryQuarterFromMonth<-function(x){
     #convert 1-3 to 3rd qtr, 4-6 to 4th qtr, 7-9 to 1st qtr, 10-12 to 2nd qtr
     xp<-(((as.numeric(x)-1)%/%3)+2)%%4+1;    
     return(xp)
