@@ -50,7 +50,7 @@ calcEffort.ByStatArea<-function(tbl=NULL,
     
     #add month and quarter dataframe
     tbl[['month']]<-wtsUtilities::parseMonths(tbl$sampdate,format='MM/DD/YY')
-    tbl[['qrtr']]<-getCrabFisheryQuarterFromMonth(tbl$month);
+    tbl[['qrtr']]<-calcCrabFisheryQuarterFromMonth(tbl$month);
     
     #add unique ids for trips and sampled pots
     tbl$trip<-paste(tbl$adfg,tbl$trip,sep='_');

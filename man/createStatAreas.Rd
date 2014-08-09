@@ -1,0 +1,22 @@
+\name{createStatAreas}
+\alias{createStatAreas}
+\title{Convert lat/lons to crab fishery stat areas.}
+\usage{
+createStatAreas(lats = NULL, lons = NULL)
+}
+\arguments{
+  \item{lats}{- vector of lats to convert}
+
+  \item{lats}{- vector of lons to convert}
+}
+\value{
+vector of crab fishery stat areas
+}
+\description{
+Function that converts vectors of lat/lons to crab fishery
+stat areas.
+}
+\details{
+
+}
+
